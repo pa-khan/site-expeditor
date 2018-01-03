@@ -1,12 +1,17 @@
 /* Including styles files */
+@import '../../libs/fancybox/dist/jquery.fancybox.css'
+@import '../../libs/slick-carousel/slick/slick.css'
+@import '../../libs/slick-carousel/slick/slick-theme.css'
+@import '../../libs/animate.css/animate.css'
 @import sprite.sass
 @import fonts.sass
 
 
 /* Global settings */
-$font-size: 16px
-$font-family-1: 'Tahoma', sans-serif
-$color-1: #000
+$font-size: 20px
+$font-family-1: 'Heebo', sans-serif
+$font-family-2: 'Lato', sans-serif
+$color-1: #333
 
 
 
@@ -55,13 +60,13 @@ a
 
 img
 	display: block
-
+	max-width: 100%
 
 .icon
 	display: inline-block
 	vertical-align: middle
 
-.text, .button, .slick-slide, .area
+.input, .button, .slick-slide, .textarea
 	outline: none
 
 /* Grid */
@@ -70,6 +75,8 @@ img
 	width: (1140px + 30px)
 	padding-left: 15px
 	padding-right: 15px
+	&_small
+		width: 975px
 
 .row, .clearfix
 	&:before, &:after
@@ -109,25 +116,88 @@ img
 
 
 /* Form elements */
-.text
+.input
+	position: relative
 	display: block
-	font-size: $font-size
-	font-family: $font-family-1
-	background: white
-	width: 100%
-	&::placeholder
-		color: #878686
+	.icon
+		position: absolute
+		
+		
+	input
+		font-size: 22px
+		font-family: $font-family-1
+		width: 100%
+		color: white
+		outline: none
+		border-radius: 3px
+		&::placeholder
+			color: #fff
+	&_black
+		input
+			padding: 15px 50px 15px 20px
+			border: 2px solid rgba(0,0,0,.35)
+			color: white
+			background: rgba(0,0,0,.35)
+		.icon
+			top: 10px
+			right: 15px
+			&.icon-location
+				right: 17px
+			&.icon-wristwatch
+				top: 12px
+	&_dark
+		input
+			background: rgba(0, 0, 0, 0.58)
+	&_big
+		input
+			font-size: 22px
+			padding: 21.5px
+		.icon
+			top: 15px
+			right: 15px
+			&.icon-persona
+				right: 17px
+			&.icon-phone
+				top: 18px
+	&_small
+		input
+			color: $color-1
+			font-size: 15px
+			padding: 7px 20px
+			border: 2px solid #f2f3f6
+			&::placeholder
+				color: gray
 
-.area
+
+.textarea
 	font-size: $font-size
 	font-family: $font-family-1
 	display: block
 	background: white
 	resize: none
 	border: 1px solid #f0f0f0
+	width: 100%
+	border-radius: 3px
+	color: white
 	&::placeholder
-		color: #878686
-
+		color: white
+	&_big
+		background: rgba(0, 0, 0, 0.58)
+		font-size: 22px
+		border: none
+		padding: 21.5px
+	&_small
+		textarea
+			font-size: 15px
+			font-family: $font-family-1
+			width: 100%
+			display: block
+			resize: none
+			padding: 15px 20px
+			height: 120px
+			border: 2px solid #f2f3f6
+			&::placeholder
+				color: gray
 
 .button
 	position: relative
@@ -139,9 +209,39 @@ img
 	margin-right: auto
 	text-align: center
 	transition: .3s
+	border-radius: 5px
+	&_green
+		color: white
+		background: #93c355
+		&:hover
+			background: #5390C3
+	&_blue
+		color: white
+		font-size: 15px
+		background: #038ed3
+		padding: 5.5px 5px
+		border-radius: 3px
+		&:hover
+			background: #93c355
+	&_small
+		font-size: 16px
+		border-radius: 3px
+		padding: 8.5px 5px
+	&_medium
+		font-size: 22px
+		padding: 9px 43px
+	&_big
+		font-size: 26px
+		text-align: left
+		padding: 18.5px 20px
+		.icon-truck
+			display: block
+			position: absolute
+			right: 15px
+			top: 22px
 
-.text, .area
-	transition: border-color .3s
+input, textarea
+	outline: none
 
 
 
@@ -156,3 +256,819 @@ img
 .center, .container
 	margin-left: auto
 	margin-right: auto
+
+body
+	padding-top: 112px
+
+.title
+	font-size: 42px
+	text-align: center
+	font-weight: 700
+	color: #3c3c3c
+
+.main-title
+	font-size: 46px
+	font-weight: 700
+
+.subtitle
+	font-size: 32px
+	font-weight: 700
+	text-align: center
+
+.panel
+	z-index: 10
+	position: fixed
+	background: #fff
+	left: 0
+	top: 0
+	width: 100%
+	border-bottom: 3px solid #dadada
+	padding-top: 25px
+	padding-bottom: 30px
+	transition: .2s
+	&_scroll
+		padding-top: 5px
+		padding-bottom: 10px
+		transition: .5s
+	&__logo
+		width: 70px
+		padding-top: 11px
+		margin-right: 45px
+	&__phone
+		font-size: 20px
+		font-weight: 400
+		padding-top: 13px
+	&__nav
+		float: right
+		margin-right: 100px
+		&-wrap
+			> ul
+				> li
+					position: relative
+					text-transform: uppercase
+					transition: .3s
+					&:hover
+						background: #eee
+					a
+						font-size: 16px
+					&:hover
+						> ul
+							display: block
+					> ul
+						display: none
+						position: absolute
+						top: 52px
+						left: 0
+						text-transform: none
+						background: #eee
+						padding-top: 10px
+						padding-bottom: 10px
+						width: 250px
+						a
+							&:hover
+								background: #E1E1E1
+						li
+							display: block
+						a
+							font-size: 16px
+							padding: 5px 15px
+					> a
+						padding: 15px
+						&:hover
+							background: #eee
+					a
+						display: block
+						border-bottom: none
+		&-home, &-wrap
+		&-home, &-wrap, &-callback
+			display: inline-block
+			vertical-align: middle
+		&-home
+			margin-right: 15px
+			&:hover
+				.icon
+					@include sprite($home-blue)
+		&-callback
+			margin-left: 15px
+			a
+				display: block
+				&:hover
+					transform: scale(.8)
+
+.header
+	position: relative
+	max-height: 580px
+	overflow: hidden
+	&__video
+		position: relative
+		margin-left: auto
+		margin-right: auto
+		video
+			width: 100%
+			height: 100%
+			object-fit: cover
+			right: 0
+			bottom: 0
+			background-size: cover
+			overflow: hidden
+	&__wrap
+		position: absolute
+		top: 0
+		left: 0
+		color: #fff
+		width: 100%
+		padding-top: 85px
+	&__title
+		font-size: 65px
+		letter-spacing: 2px
+		margin-bottom: 5px
+	&__desc
+		font-size: 21px
+		margin-bottom: 30px
+
+	&__elements
+		font-size: 0
+		margin-left: -15px
+		margin-right: -15px
+		margin-bottom: 15px
+	&__input
+		width: 295px
+		display: inline-block
+		vertical-align: top
+		margin-left: 15px
+		margin-right: 15px
+	&__submit
+		font-size: 0
+	&__text
+		font-size: 22px
+		padding-top: 10px
+		padding-right: 5px
+		width: calc(100% - 205px)
+	&__button
+		width: 205px
+	&__text, &__button
+		display: inline-block
+		vertical-align: top
+
+
+.order
+	padding-top: 50px
+	padding-bottom: 55px
+	background: #f6f6f6
+	&__title
+		margin-bottom: 25px
+	&__elements
+		font-size: 0
+		margin-left: -5px
+		margin-right: -5px
+		margin-bottom: 20px
+	&__input, &__button
+		width: 305px
+		display: inline-block
+		vertical-align: top
+		margin-left: 5px
+		margin-right: 5px
+	
+
+.services
+	text-align: center
+	margin-bottom: 55px
+	&__top
+		padding-top: 90px
+		padding-bottom: 90px
+	&__title
+		margin-bottom: 20px
+	&__desc
+		font-size: 24px
+	&__middle
+		margin-bottom: 40px
+	&__item
+		width: 50%
+		background: #f5f5f5
+		padding-top: 80px
+		padding-bottom: 80px
+		min-height: 460px
+		&:nth-of-type(1), &:nth-of-type(4), &:nth-of-type(5)
+			background: #f0f0f0
+	&__img
+		line-height: 143px
+		margin-bottom: 30px
+		img
+			display: inline-block
+			vertical-align: middle
+	&__subtitle
+		font-size: 25px
+		font-weight: 700
+		margin-bottom: 30px
+	&__text
+		max-width: 320px
+		margin-left: auto
+		margin-right: auto
+		font-size: 18px
+	&__button
+		width: 190px
+		padding-left: 5px
+		padding-right: 5px
+		font-size: 18px
+
+
+.adventages
+	margin-bottom: 30px
+	&__head
+		padding-bottom: 60px
+	&__title
+		margin-bottom: 20px
+	&__desc
+		font-size: 24px
+		text-align: center
+		line-height: 26px
+	&__item
+		padding-top: 70px
+		padding-bottom: 70px
+		&:nth-of-type(odd)
+			background: #f5f5f5
+		&:nth-of-type(even)
+			.adventages
+				&__img
+					float: right
+	&__img
+		width: 270px
+		text-align: center
+		img
+			display: inline-block
+			vertical-align: top
+	&__content
+		width: calc(100% - 270px)
+	&__subtitle
+		font-size: 26px
+		font-weight: 700
+		margin-bottom: 15px
+
+.counts
+	color: white
+	background: url('../../img/bg/office-1.png') no-repeat center
+	background-size: cover
+	padding-top: 80px
+	padding-bottom: 80px
+	&__item
+		display: block
+		width: 300px
+		font-family: $font-family-2
+		&:nth-of-type(1)
+			position: absolute
+			top: -15px
+			right: 0
+			width: 370px
+			text-align: right
+			img
+				margin-bottom: 15px
+			span
+				display: none
+		&:nth-of-type(3)
+			margin-left: 280px
+		&:nth-of-type(4)
+			margin-left: 560px
+		&:nth-of-type(5)
+			margin-left: 840px
+			
+	&__count
+		font-size: 90px
+		line-height: 90px
+		font-weight: 700
+		&_color
+			
+	&__text
+		font-size: 24px
+		
+
+.clients, .reviews
+	&__wrap
+		// padding-left: 40px
+		// padding-right: 40px
+	&__item
+		padding-left: 15px
+		padding-right: 15px
+		
+	&__title
+		padding-top: 60px
+		padding-bottom: 60px
+	&__list
+		padding-top: 65px
+		padding-bottom: 65px
+		background: #f8f9fa
+		&:hover
+			.slick-arrow
+				opacity: .3
+
+
+.clients
+	&__item
+		line-height: 120px
+		text-align: center
+		opacity: .6
+		transition: .3s
+		&:hover
+			opacity: 1
+		a
+			display: block
+			border-bottom: none
+		img
+			max-height: 120px
+			display: inline-block
+			vertical-align: middle
+		
+
+.reviews
+	&__item
+		position: relative
+		padding-left: 15px
+		padding-right: 15px
+		a
+			display: block
+			&:before
+				z-index: 1
+				content: ''
+				position: absolute
+				top: 0
+				left: 15px
+				right: 15px
+				width: auto
+				height: 100%
+				background: rgba(63, 85, 103, 0.6)
+			&:after
+				z-index: 2
+				position: absolute
+				content: ''
+				@include sprite($magnifier)
+				top: 50%
+				left: 50%
+				margin-top: -38px
+				margin-left: -40px
+				transform: scale(0)
+			&:before, &:after
+				opacity: 0
+				transition: .3s
+			&:hover
+				&:before, &:after
+					opacity: 1
+				&:after
+					transform: scale(1)
+
+
+.consultation
+	padding-top: 120px
+	padding-bottom: 120px
+	color: white
+	background: url('../../img/bg/road.png') no-repeat center
+	background-size: cover
+	text-align: center
+	&__title
+		color: white
+		margin-bottom: 10px
+	&__desc
+		margin-bottom: 60px
+	&__left, &__right
+		width: 50%
+	&__left
+		padding-right: 15px
+	&__right
+		padding-left: 15px
+	&__input, &__textarea
+		margin-bottom: 25px
+	&__textarea
+		height: 175px
+	&__button
+		width: 100%
+		text-align: center
+		border-radius: 3px
+	
+	&__phones
+		margin-top: 25px
+		background: rgba(0, 0, 0, 0.58)
+		padding: 25px
+		border-radius: 3px
+		a
+			color: white
+			font-size: 24px
+			font-weight: 700
+	&__phone
+		width: 33.3333%
+		.icon
+			transform: scale(.58)
+			position: relative
+			top: -2px
+		&:first-of-type
+			text-align: left
+		&:last-of-type
+			text-align: right
+
+.footer
+	color: white
+	padding-top: 70px
+	padding-bottom: 50px
+	background: linear-gradient(90deg, #93c355 0%, #5390c3 100%)
+	a
+		color: white
+	&__left, &__middle, &__right
+		width: 33.3333%
+	&__logo
+		margin-bottom: 30px
+	&__nav
+		li
+			display: block
+		a
+			font-size: 16px
+			&:hover
+				border-color: white
+	&__offer, &__copy
+		font-size: 12px
+	&__offer
+		margin-top: 65px
+	&__copy
+		margin-top: 50px
+	&__socials
+		padding-top: 75px
+		text-align: center
+		li
+			margin-left: 10px
+			margin-right: 10px
+		a
+			display: block
+			&:hover
+				transform: scale(.8)
+
+		
+	&__contacts
+		li
+			display: block
+			font-size: 14px
+			margin-left: -7px
+		.icon-phone
+			transform: scale(.33)
+			margin-left: -2px
+		.icon-email
+			transform: scale(.5)
+		.icon-location
+			transform: scale(.33)
+	
+
+.banner
+	text-align: center
+	background-repeat: no-repeat
+	background-position: center
+	background-size: cover
+	padding-top: 70px
+	padding-bottom: 90px
+	&__title
+		margin-bottom: 15px
+	&__text
+		max-width: 950px
+		margin-left: auto
+		margin-right: auto
+	
+
+.services-page
+	text-align: center
+	background-repeat: no-repeat
+	background-position: center
+	background-size: cover
+	padding-top: 70px
+	&__head
+		padding-bottom: 90px
+	&__title
+		margin-bottom: 15px
+	&__item
+		padding-top: 70px
+		padding-bottom: 70px
+		border-top: 1px solid #f2f3f6
+	&__img
+		width: 250px
+		padding-top: 15px
+		img
+			width: 220px
+			margin-left: auto
+			margin-right: auto
+	&__content
+		width: 630px
+		text-align: left
+		padding-left: 70px
+	&__subtitle
+		font-size: 42px
+		margin-bottom: 15px
+	&__text
+		font-size: 18px
+		margin-bottom: 25px
+	&__button
+		width: 115px
+		margin-left: 0
+
+
+.service
+	padding-top: 70px
+	&__title
+		margin-bottom: 25px
+	&__desc
+		text-align: center
+		margin-bottom: 70px
+	&__list
+		margin-left: -15px
+		margin-right: -15px
+		margin-bottom: 90px
+	&__item
+		width: 355px
+		margin-left: 15px
+		margin-right: 15px
+		transition: .5s
+		&:hover
+			box-shadow: 0 -5px 30px rgba(78, 82, 99, 0.3)
+	&__sub
+		&title
+			font-size: 25px
+			margin-bottom: 15px
+		&desc
+			font-size: 16px
+			color: #7b8285
+	&__content
+		padding: 25px 30px 30px
+		background: #F8F9FA
+		min-height: 220px
+
+	&__text
+		padding-top: 30px
+		padding-bottom: 70px
+		&-content
+			width: 780px
+			padding-right: 15px
+		&-blocks
+			width: 360px
+			padding-top: 60px
+
+
+.price
+	background: #f6f6f6
+	padding-top: 60px
+	padding-bottom: 70px
+	&__title
+		margin-bottom: 40px
+	&__table
+		table
+			width: 100%
+			border-collapse: collapse
+		thead
+			td
+				color: white
+				background: #333
+		tbody
+			td
+				border-bottom: 2px solid #F2F3F6
+			tr
+				&:last-of-type
+				td
+					// border-bottom: none
+		td
+			font-size: 16px
+			padding: 13px 25px
+			background: white
+
+
+
+.features
+	color: white
+	background: #2A2C32
+	padding-top: 70px
+	padding-bottom: 70px
+	&__title
+		color: white
+		margin-bottom: 60px
+	&__list
+		margin-left: -15px
+		margin-right: -15px
+	&__item
+		width: 33.3333%
+		padding-left: 15px
+		padding-right: 15px
+		margin-bottom: 40px
+	&__img
+		width: 75px
+	&__content
+		text-align: left
+		width: calc(100% - 80px)
+		padding-left: 20px
+	&__subtitle
+		font-size: 21px
+		margin-bottom: 15px
+	&__text
+		font-size: 16px
+
+
+.tabs
+	padding-top: 50px
+	padding-bottom: 50px
+	&_gray
+		background: #f6f6f6
+	&__title
+		font-size: 22px
+		margin-bottom: 30px
+		font-weight: 700
+	&__nav
+		margin-bottom: -2px
+		li
+			margin-right: 2px
+			a
+				outline: none
+			&:last-of-type
+				margin-right: 0
+			&.ui-tabs-active
+				a
+					border-bottom-color: white
+		a
+			display: block
+			font-weight: 700
+			width: 160px
+			text-align: center
+			background: white
+			padding: 8.5px 5px
+			border: 2px solid #f2f3f6
+			// border: 2px solid transparent
+			border-radius: 2px 2px 0 0
+	&__wrap
+		border: 2px solid #f2f3f6
+		background: white
+		&-desc
+			font-size: 16px
+			padding: 5px 30px 30px
+
+	&__item
+		padding: 20px 30px
+		table
+			width: 100%
+			border-collapse: collapse
+		td
+			font-size: 16px
+			padding: 5px
+			border: 1px solid #f2f3f6
+		
+		
+
+.text
+	text-align: left
+	h2
+		display: block
+		font-size: 35px
+		font-weight: 700
+		margin-bottom: 15px
+	ul, ol
+		padding-top: 15px
+		padding-bottom: 15px
+		li
+			display: block
+	li, p
+		font-size: 16px
+
+.traking
+	padding-bottom: 100px
+	&__frame, &__block
+		padding-left: 15px
+		padding-right: 15px
+	&__block
+		width: 360px
+		margin-left: 30px
+		.block
+			&__text
+				max-width: 300px
+				margin-bottom: 62px
+
+.contacts
+	color: white
+	background: url('../../img/bg/office-2.jpg') no-repeat center
+	background-size: cover
+	padding-top: 60px
+	padding-bottom: 60px
+	a
+		color: white
+	&__text-wrap
+		text-align: left
+
+	&__text-wrap, &__blocks
+		width: 50%
+
+	&__text
+		padding-top: 35px
+		.icon
+			transform: scale(.6)
+			margin-left: -4px
+			&-phone
+				margin-left: -5px
+		&-big
+			font-size: 24px
+			line-height: 44px
+			margin-bottom: 80px
+		&-small
+			font-size: 18px
+			margin-bottom: 15px
+	&__blocks
+		&-wrap
+			font-size: 0
+			margin-left: -15px
+			margin-right: -15px
+			margin-bottom: 45px
+	&__block
+		display: inline-block
+		vertical-align: top
+		width: 270px
+		margin-left: 15px
+		margin-right: 15px
+		
+.feedback
+	&__title
+		font-size: 25px
+		margin-bottom: 20px
+	&__wrap
+		font-size: 0
+		text-align: left
+	&__input
+		width: 50%
+		display: inline-block
+		vertical-align: top
+		margin-bottom: 20px
+		&:nth-of-type(1)
+			padding-right: 10px
+		&:nth-of-type(2)
+			padding-left: 10px
+	&__textarea
+		margin-bottom: 50px
+	&__button
+		display: inline-block
+		padding-left: 30px
+		padding-right: 30px
+		
+
+.block
+	position: relative
+	padding: 30px
+	background: #e6f1f5
+	text-align: left
+	border-radius: 3px
+	overflow: hidden
+	min-height: 150px
+	color: $color-1
+	&:after
+		z-index: 1
+		content: ''
+		bottom: 0
+		right: 0
+		position: absolute
+		background-repeat: no-repeat
+		background-position: center
+	&_questions
+		&:after
+			width: 64px
+			height: 109px
+			background-image: url('../../img/bg/block-question.png') 
+	&_price
+		&:after
+			width: 152px
+			height: 100px
+			background-image: url('../../img/bg/block-price.png') 
+	&_traking
+		&:after
+			width: 141px
+			height: 127px
+			background-image: url('../../img/bg/block-traking.png') 
+	&__wrap
+		position: relative
+		z-index: 2
+	&__title
+		font-weight: 700
+		font-size: 24px
+		margin-bottom: 15px
+	&__text
+		color: #7b8285
+		font-size: 15px
+		margin-bottom: 20px
+	&__button
+		display: inline-block
+		padding-left: 20px
+		padding-right: 20px
+
+.map
+	iframe
+		width: 100% !important
+		margin-bottom: -8px
+
+.slick-arrow
+	z-index: 1
+	width: auto
+	height: auto
+	opacity: 0
+	transition: .3s
+	&:hover
+		opacity: 1 !important
+	&:before
+		display: none
+	&.slick-prev
+		@include sprite($arrow-left)
+		left: -40px
+	&.slick-next
+		@include sprite($arrow-right)
+		right: -40px

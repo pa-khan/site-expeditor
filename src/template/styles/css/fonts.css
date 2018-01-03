@@ -1,0 +1,35 @@
+/* Including fonts */
+@font-face {
+  src: url("../../fonts/Heebo/Heebo-Light.ttf");
+  font-family: 'Heebo';
+  font-weight: 300; }
+
+@font-face {
+  src: url("../../fonts/Heebo/Heebo-Regular.ttf");
+  font-family: 'Heebo';
+  font-weight: 400; }
+
+@font-face {
+  src: url("../../fonts/Heebo/Heebo-Bold.ttf");
+  font-family: 'Heebo';
+  font-weight: 700; }
+
+@font-face {
+  src: url("../../fonts/Lato/Lato-Light.ttf");
+  font-family: 'Lato';
+  font-weight: 300; }
+
+@font-face {
+  src: url("../../fonts/Lato/Lato-Regular.ttf");
+  font-family: 'Lato';
+  font-weight: 400; }
+
+@font-face {
+  src: url("../../fonts/Lato/Lato-Bold.ttf");
+  font-family: 'Lato';
+  font-weight: 700; }
+
+@font-face {
+  src: url("../../fonts/Lato/Lato-Black.ttf");
+  font-family: 'Lato';
+  font-weight: 900; }
